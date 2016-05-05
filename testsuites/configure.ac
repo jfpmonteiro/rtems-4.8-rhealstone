@@ -50,6 +50,7 @@ if test "$enable_tests" = "yes"; then
   if test "$rtems_cv_RTEMS_ITRON_API" = "yes"; then
     AC_CONFIG_SUBDIRS(tmitrontests)
   fi
+  AC_CONFIG_SUBDIRS(rhealstone)
 fi
 
 # Explicitly list all Makefiles here
