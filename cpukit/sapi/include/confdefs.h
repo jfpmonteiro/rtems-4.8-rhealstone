@@ -651,6 +651,13 @@ posix_initialization_threads_table POSIX_Initialization_threads[] = {
 
 #endif
 
+/**
+ * By default, use the minimun stack size requested by this port.
+ */
+#ifndef CONFIGURE_MINIMUM_TASK_STACK_SIZE
+  #define CONFIGURE_MINIMUM_TASK_STACK_SIZE CPU_STACK_MINIMUM_SIZE
+#endif /* CONFIGURE_MINIMUM_TASK_STACK_SIZE */
+
 #define CONFIGURE_MEMORY_PER_TASK_FOR_POSIX_API \
   ( \
     sizeof (POSIX_API_Control) + \
