@@ -9,7 +9,8 @@
 #endif
 
 #include <timesys.h>
-#include <rtems/btimer.h>
+/* #include <rtems/btimer.h> */
+#include <btimer.h>
 
 const char rtems_test_name[] = "RHMLATENCY";
 
@@ -37,7 +38,8 @@ void Init(
 
   Print_Warning();
 
-  TEST_BEGIN();
+  /* TEST_BEGIN(); */
+  printf("*** BEGIN OF TEST RHTASKSWITCH ***\n");
 
   status = rtems_message_queue_create(
     rtems_build_name( 'M', 'Q', '1', ' '  ),
@@ -139,7 +141,8 @@ rtems_task Task02( rtems_task_argument ignored )
    treceive_overhead             /* Overhead of recieve call and task switch */
   );
 
-  TEST_END();
+  /* TEST_END(); */
+  printf("*** END OF TEST RHTASKSWITCH ***\n");
   rtems_test_exit( 0 );
 }
 

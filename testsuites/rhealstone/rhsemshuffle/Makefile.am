@@ -2,7 +2,7 @@ MANAGERS = all
 
 rtems_tests_PROGRAMS = rhsemshuffle
 rhsemshuffle_SOURCES  = semshuffle.c
-rhsemshuffle_SOURCES += ../../tmtests/include/timesys.h
+rhsemshuffle_SOURCES += ../../tmitrontests/include/timesys.h
 
 dist_rtems_tests_DATA = rhsemshuffle.adoc
 
@@ -10,8 +10,8 @@ include $(RTEMS_ROOT)/make/custom/@RTEMS_BSP@.cfg
 include $(top_srcdir)/../automake/compile.am
 include $(top_srcdir)/../automake/leaf.am
 
-AM_CPPFLAGS += -I$(top_srcdir)/../tmtests/include
 AM_CPPFLAGS += -I$(top_srcdir)/../support/include
+AM_CPPFLAGS += -I$(top_srcdir)/include
 
 LINK_OBJS = $(rhsemshuffle_OBJECTS) $(rhsemshuffle_LDADD)
 LINK_LIBS = $(rhsemshuffle_LDLIBS)

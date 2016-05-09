@@ -5,7 +5,8 @@
  */
 
 #include <timesys.h>
-#include <rtems/btimer.h>
+/* #include <rtems/btimer.h> */
+#include <btimer.h>
 
 const char rtems_test_name[] = "RHDEADLOCKBRK";
 
@@ -36,7 +37,8 @@ rtems_task Init( rtems_task_argument ignored )
 
   Print_Warning();
 
-  TEST_BEGIN();
+  /* TEST_BEGIN(); */
+  printf("*** BEGIN OF TEST RHTASKSWITCH ***\n");
 
   sem_attr = RTEMS_INHERIT_PRIORITY | RTEMS_BINARY_SEMAPHORE | RTEMS_PRIORITY;
 
@@ -143,7 +145,8 @@ rtems_task Task01( rtems_task_argument ignored )
        tswitch_overhead,        /* Overhead of loop and task switches */
        tobtain_overhead
     );
-    TEST_END();
+    /* TEST_END(); */
+    printf("*** END OF TEST RHTASKSWITCH ***\n");
     rtems_test_exit( 0 );
   }
 

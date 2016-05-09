@@ -5,7 +5,8 @@
  */
 
 #include <timesys.h>
-#include <rtems/btimer.h>
+/* #include <rtems/btimer.h> */
+#include <btimer.h>
 
 const char rtems_test_name[] = "RHTASKPREEMPT";
 
@@ -65,7 +66,8 @@ rtems_task Task02( rtems_task_argument ignored )
      tswitch_overhead              /* Overhead of task switch back to TA01 */
   );
 
-  TEST_END();
+  /* TEST_END(); */
+  printf("*** END OF TEST RHTASKSWITCH ***\n");
   rtems_test_exit( 0 );
 }
 
@@ -73,7 +75,8 @@ rtems_task Init( rtems_task_argument ignored )
 {
   Print_Warning();
 
-  TEST_BEGIN();
+  /* TEST_BEGIN(); */
+  printf("*** BEGIN OF TEST RHTASKSWITCH ***\n");
 
   Task_name[0] = rtems_build_name( 'T','A','0','1' );
   status = rtems_task_create(

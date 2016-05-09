@@ -15,7 +15,8 @@
 
 #define CONFIGURE_INIT
 #include <timesys.h>
-#include <rtems/btimer.h>
+/* #include <rtems/btimer.h> */
+#include <btimer.h>
 #include <rtems/score/schedulerpriorityimpl.h>
 #include <coverhd.h>
 
@@ -59,7 +60,8 @@ rtems_task Init(
 
   Print_Warning();
 
-  TEST_BEGIN();
+  /* TEST_BEGIN(); */
+  printf("*** BEGIN OF TEST RHTASKSWITCH ***\n");
 
   if (
     _Scheduler_Table[ 0 ].Operations.initialize
@@ -113,7 +115,8 @@ rtems_task Task_1(
     0
   );
 
-  TEST_END();
+  /* TEST_END(); */
+  printf("*** END OF TEST RHTASKSWITCH ***\n");
   rtems_test_exit( 0 );
 }
 
