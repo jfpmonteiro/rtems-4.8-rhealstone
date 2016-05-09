@@ -95,7 +95,7 @@ void Timer_initialize( void )
  *  @param  None
  *  @return Timer value in microseconds
  */
-uint32_t Read_timer( void )
+uint32_t Timer_read( void )
 {
   uint32_t  ticks;
   uint32_t  total;

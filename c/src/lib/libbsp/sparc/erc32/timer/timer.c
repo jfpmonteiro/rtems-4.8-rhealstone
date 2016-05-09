@@ -63,7 +63,6 @@ void Timer_initialize()
 #define LEAST_VALID      13  /* Don't trust a value lower than this */
 #endif
 
-/* int Read_timer() */
 int Timer_read()
 {
   uint32_t          total;

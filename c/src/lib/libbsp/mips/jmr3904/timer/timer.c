@@ -45,7 +45,7 @@ void Timer_initialize()
 #define LEAST_VALID       1  /* Don't trust a value lower than this */
                              /* tx39 simulator can count instructions. :) */
 
-int Read_timer()
+int Timer_read()
 {
   uint32_t          total;
 

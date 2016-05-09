@@ -65,7 +65,7 @@ void Timer_initialize()
                              /* (6 countdowns) to start/stop the timer. */
 #define LEAST_VALID       10 /* Don't trust a value lower than this */
 
-int Read_timer()
+int Timer_read()
 {
 /*
   uint8_t          msb, lsb;

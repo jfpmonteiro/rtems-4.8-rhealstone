@@ -133,7 +133,7 @@ void Timer_initialize(void)
                              /* (3 ticks) to start/stop the timer. */
 #define LEAST_VALID       4  /* Don't trust a value lower than this */
 
-int Read_timer(void)
+int Timer_read(void)
 {
   register uint32_t         clicks, total;
   register uint8_t         lsb, msb;

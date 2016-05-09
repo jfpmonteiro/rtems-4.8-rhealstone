@@ -56,7 +56,6 @@ void Timer_initialize()
                              /*     to start/stop the timer. */
 #define LEAST_VALID       2  /* Don't trust a value lower than this */
 
-/* int Read_timer() */
 int Timer_read()
 {
   uint32_t total;

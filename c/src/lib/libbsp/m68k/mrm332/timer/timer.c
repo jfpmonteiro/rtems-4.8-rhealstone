@@ -49,7 +49,7 @@ void Timer_initialize( void )
 /*
  * Return timer value in 1/2-microsecond units
  */
-int Read_timer( void )
+int Timer_read( void )
 {
   uint32_t         total;
   total = 0;

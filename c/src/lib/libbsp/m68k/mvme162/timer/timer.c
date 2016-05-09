@@ -63,7 +63,7 @@ void Timer_initialize()
                                 /* (3 countdowns) to start/stop the timer. */
 #define LEAST_VALID       10U   /* Don't trust a value lower than this */
 
-int Read_timer()
+int Timer_read()
 {
   uint32_t            total;
 

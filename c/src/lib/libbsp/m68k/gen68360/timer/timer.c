@@ -73,7 +73,7 @@ Timer_initialize (void)
  * Return timer value in microsecond units
  */
 int
-Read_timer (void)
+Timer_read (void)
 {
 	return *(uint32_t*)&m360.tcn1;
 }

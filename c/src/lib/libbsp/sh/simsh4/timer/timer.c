@@ -69,7 +69,7 @@ Timer_initialize(void)
  *     number of microseconds since timer has been started
  */
 int
-Read_timer( void )
+Timer_read( void )
 {
     return 0;
 }

@@ -105,7 +105,7 @@ void Timer_initialize()
  *  LEAST_VALID is the lowest number this routine should trust.  Numbers
  *  below this are "noise" and zero is returned.
  */
-int Read_timer()
+int Timer_read()
 {
   uint32_t            total;
 

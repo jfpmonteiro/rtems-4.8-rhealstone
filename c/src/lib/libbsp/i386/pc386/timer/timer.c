@@ -310,7 +310,7 @@ Timer_initialize(void)
 }
 
 uint32_t
-Read_timer()
+Timer_read()
 {
     return (*Read_timer_function)();
 }

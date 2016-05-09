@@ -43,7 +43,7 @@ void Timer_initialize()
  *  Read_timer
  */
 
-int Read_timer()
+int Timer_read()
 {
   uint64_t          clicks;
   uint64_t          total64;

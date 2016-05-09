@@ -56,7 +56,7 @@ void Timer_initialize()
 				synchronized whith the counter updates*/
 #define LEAST_VALID       10 /* Don't trust a value lower than this */
 
-int Read_timer()
+int Timer_read()
 {
   uint32_t         total;
   uint16_t         counter_value;

@@ -256,7 +256,7 @@ void Timer_initialize (void)
   Description: Return timer value in microsecond units
  *****************************************************/
 int
-Read_timer (void)
+Timer_read(void)
 {
  /* there's CLOCK_SPEED / 16 micro seconds between two timer register decrement */
  return (((0xFFFF - TCNTR2) * CLOCK_SPEED) / 16);

@@ -56,7 +56,7 @@ void Timer_initialize()
                              /* mongoose-v can count cycles. :) */
 #include <rtems/bspIo.h>
 
-int Read_timer()
+int Timer_read()
 {
   uint32_t          clicks;
   uint32_t          total;

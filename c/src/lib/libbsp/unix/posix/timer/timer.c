@@ -34,7 +34,7 @@ void Timer_initialize()
                              /* (XX countdowns) to start/stop the timer. */
 #define LEAST_VALID       10 /* Don't trust a value lower than this */
 
-int Read_timer()
+int Timer_read()
 {
   int total;
 

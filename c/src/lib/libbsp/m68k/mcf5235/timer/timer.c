@@ -22,7 +22,7 @@ Timer_initialize(void)
  * Return timer value in microsecond units
  */
 int
-Read_timer(void)
+Timer_read(void)
 {
     return MCF5235_TIMER3_DTCN;
 }

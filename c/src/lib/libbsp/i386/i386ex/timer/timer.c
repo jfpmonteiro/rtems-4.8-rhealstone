@@ -107,7 +107,7 @@ void Timer_initialize()
                              /* (3 ticks) to start/stop the timer. */
 #define LEAST_VALID       4  /* Don't trust a value lower than this */
 
-int Read_timer()
+int Timer_read()
 {
   register uint32_t         clicks;
   register uint32_t         total;

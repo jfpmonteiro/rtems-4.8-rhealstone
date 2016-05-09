@@ -75,7 +75,7 @@ void Timer_initialize( void )
 /*
  * Return timer value in 1/2-microsecond units
  */
-int Read_timer( void )
+int Timer_read( void )
 {
   uint16_t         clicks;
   uint32_t         total;

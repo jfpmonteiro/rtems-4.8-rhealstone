@@ -54,7 +54,7 @@ void Timer_initialize( void )
                              /* This value is in microseconds. */
 #define LEAST_VALID       1  /* Don't trust a clicks value lower than this */
 
-int Read_timer( void )
+int Timer_read( void )
 {
   uint32_t         clicks;
   uint32_t         total;
