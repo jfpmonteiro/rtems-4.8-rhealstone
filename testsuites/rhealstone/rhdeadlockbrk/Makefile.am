@@ -2,7 +2,6 @@ MANAGERS = all
 
 rtems_tests_PROGRAMS = rhdeadlockbrk
 rhdeadlockbrk_SOURCES  = deadlockbrk.c
-rhdeadlockbrk_SOURCES += ../../tmitrontests/include/timesys.h
 
 dist_rtems_tests_DATA = rhdeadlockbrk.adoc
 
@@ -12,6 +11,7 @@ include $(top_srcdir)/../automake/leaf.am
 
 AM_CPPFLAGS = -I$(top_srcdir)/../support/include
 AM_CPPFLAGS += -I$(top_srcdir)/include
+AM_CPPFLAGS += -I$(top_srcdir)/../tmitrontests/include
 
 LINK_OBJS = $(rhdeadlockbrk_OBJECTS) $(rhdeadlockbrk_LDADD)
 LINK_LIBS = $(rhdeadlockbrk_LDLIBS)

@@ -2,7 +2,6 @@ MANAGERS = all
 
 rtems_tests_PROGRAMS = rhmlatency
 rhmlatency_SOURCES  = mlatency.c
-rhmlatency_SOURCES += ../../tmitrontests/include/timesys.h
 
 dist_rtems_tests_DATA = rhmlatency.adoc
 
@@ -12,6 +11,7 @@ include $(top_srcdir)/../automake/leaf.am
 
 AM_CPPFLAGS = -I$(top_srcdir)/../support/include
 AM_CPPFLAGS += -I$(top_srcdir)/include
+AM_CPPFLAGS += -I$(top_srcdir)/../tmitrontests/include
 
 LINK_OBJS = $(rhmlatency_OBJECTS) $(rhmlatency_ldaDD)
 LINK_LIBS = $(rhmlatency_LDLIBS)

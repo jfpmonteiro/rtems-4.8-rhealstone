@@ -2,7 +2,6 @@ MANAGERS = all
 
 rtems_tests_PROGRAMS = rhilatency
 rhilatency_SOURCES  = ilatency.c
-rhilatency_SOURCES += ../../tmitrontests/include/timesys.h
 
 dist_rtems_tests_DATA = rhilatency.adoc
 
@@ -12,6 +11,7 @@ include $(top_srcdir)/../automake/leaf.am
 
 AM_CPPFLAGS = -I$(top_srcdir)/../support/include
 AM_CPPFLAGS += -I$(top_srcdir)/include
+AM_CPPFLAGS += -I$(top_srcdir)/../tmitrontests/include
 
 LINK_OBJS = $(rhilatency_OBJECTS) $(rhilatency_ldaDD)
 LINK_LIBS = $(rhilatency_LDLIBS)

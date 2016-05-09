@@ -1,7 +1,5 @@
 ACLOCAL_AMFLAGS = -I ../aclocal
 
-noinst_HEADERS = include/timesys.h
-
 SUBDIRS  = rhtaskswitch
 SUBDIRS += rhtaskpreempt
 SUBDIRS += rhilatency
