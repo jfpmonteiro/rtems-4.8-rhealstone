@@ -34,9 +34,9 @@ rtems_task Task01( rtems_task_argument ignored )
   status = rtems_task_start( Task_id[1], Task02, 0);
   directive_failed( status, "rtems_task_start of TA02");
 
-  tswitch_overhead = benchmark_timer_read();
+  tswitch_overhead = Timer_read();
 
-  benchmark_timer_initialize();
+  Timer_initialize();
   /* Benchmark code */
   for ( count1 = 0; count1 < BENCHMARKS; count1++ ) {
     rtems_task_resume( Task_id[1] );  /* Awaken TA02, preemption occurs */
@@ -49,7 +49,7 @@ rtems_task Task01( rtems_task_argument ignored )
 rtems_task Task02( rtems_task_argument ignored )
 {
   /* Find overhead of task switch back to TA01 (not a preemption) */
-  benchmark_timer_initialize();
+  Timer_initialize();
   rtems_task_suspend( RTEMS_SELF );
 
   /* Benchmark code */
@@ -57,7 +57,7 @@ rtems_task Task02( rtems_task_argument ignored )
     rtems_task_suspend( RTEMS_SELF );
   }
 
-  telapsed = benchmark_timer_read();
+  telapsed = Timer_read();
   put_time(
      "Rhealstone: Task Preempt",
      telapsed,                     /* Total time of all benchmarks */
@@ -101,11 +101,11 @@ rtems_task Init( rtems_task_argument ignored )
   directive_failed( status, "rtems_task_create of TA02");
 
   /* Find loop overhead */
-  benchmark_timer_initialize();
+  Timer_initialize();
   for ( count1 = 0; count1 < ( BENCHMARKS * 2 ) - 1; count1++ ); {
      /* rtems_task_resume( Task_id[1] ); */
   }
-  tloop_overhead = benchmark_timer_read();
+  tloop_overhead = Timer_read();
 
   status = rtems_task_start( Task_id[0], Task01, 0 );
   directive_failed( status, "rtems_task_start of TA01");

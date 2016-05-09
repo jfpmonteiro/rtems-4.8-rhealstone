@@ -72,11 +72,11 @@ void Init(
   );
   directive_failed( status, "rtems_task_create of TA01" );
 
-  benchmark_timer_initialize();
+  Timer_initialize();
   for ( count = 0; count < BENCHMARKS - 1; count++ ) {
     /* message send/recieve */
   }
-  tloop_overhead = benchmark_timer_read();
+  tloop_overhead = Timer_read();
 
   status = rtems_task_start( Task_id[0], Task01, 0 );
   directive_failed( status, "rtems_task_start of TA01" );
@@ -110,7 +110,7 @@ rtems_task Task02( rtems_task_argument ignored )
   size_t size;
 
   /* find recieve overhead - no preempt or task switch */
-  benchmark_timer_initialize();
+  Timer_initialize();
   (void) rtems_message_queue_receive(
              Queue_id,
              (long (*)[4]) Buffer,
@@ -118,10 +118,10 @@ rtems_task Task02( rtems_task_argument ignored )
              RTEMS_DEFAULT_OPTIONS,
              RTEMS_NO_TIMEOUT
            );
-  treceive_overhead = benchmark_timer_read();
+  treceive_overhead = Timer_read();
 
   /* Benchmark code */
-  benchmark_timer_initialize();
+  Timer_initialize();
   for ( count = 0; count < BENCHMARKS - 1; count++ ) {
     (void) rtems_message_queue_receive(
              Queue_id,
@@ -131,7 +131,7 @@ rtems_task Task02( rtems_task_argument ignored )
              RTEMS_NO_TIMEOUT
            );
   }
-  telapsed = benchmark_timer_read();
+  telapsed = Timer_read();
 
   put_time(
    "Rhealstone: Intertask Message Latency",

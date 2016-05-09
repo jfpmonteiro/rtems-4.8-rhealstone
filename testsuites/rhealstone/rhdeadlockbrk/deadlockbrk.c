@@ -86,9 +86,9 @@ rtems_task Init( rtems_task_argument ignored )
   directive_failed( status, "rtems_task_create of TA03" );
 
   /* find overhead of obtaining semaphore */
-  benchmark_timer_initialize();
+  Timer_initialize();
   rtems_semaphore_obtain( sem_id, RTEMS_WAIT, 0 );
-  tobtain_overhead = benchmark_timer_read();
+  tobtain_overhead = Timer_read();
   rtems_semaphore_release( sem_id );
 
   rtems_task_mode( RTEMS_PREEMPT, RTEMS_PREEMPT_MASK, &prev_mode );
@@ -114,7 +114,7 @@ rtems_task Task01( rtems_task_argument ignored )
   /* All tasks have had time to start up once TA01 is running */
 
   /* Benchmark code */
-  benchmark_timer_initialize();
+  Timer_initialize();
   for ( count = 0; count < BENCHMARKS; count++ ) {
     if ( sem_exe == 1 ) {
       /* Block on call */
@@ -129,7 +129,7 @@ rtems_task Task01( rtems_task_argument ignored )
     /* Suspend self, go to TA02 */
     rtems_task_suspend( RTEMS_SELF );
   }
-  telapsed = benchmark_timer_read();
+  telapsed = Timer_read();
 
   /* Check which run this was */
   if (sem_exe == 0) {

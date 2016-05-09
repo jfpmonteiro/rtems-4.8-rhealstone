@@ -125,7 +125,7 @@ rtems_task Task02( rtems_task_argument ignored )
 {
 
   /* Benchmark code */
-  benchmark_timer_initialize();
+  Timer_initialize();
   for ( count = 0; count < BENCHMARKS; count++ ) {
     if ( sem_exe == 1 ) {
       rtems_semaphore_obtain( sem_id, RTEMS_WAIT, 0 );
@@ -137,7 +137,7 @@ rtems_task Task02( rtems_task_argument ignored )
     }
     rtems_task_wake_after( RTEMS_YIELD_PROCESSOR );
   }
-  telapsed = benchmark_timer_read();
+  telapsed = Timer_read();
 
   /* Check which run this was */
   if (sem_exe == 0) {

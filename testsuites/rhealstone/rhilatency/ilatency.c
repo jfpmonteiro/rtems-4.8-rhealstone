@@ -86,10 +86,10 @@ rtems_task Init(
   status = rtems_task_start( Task_id, Task_1, 0 );
   directive_failed( status, "rtems_task_start Task_1" );
 
-  benchmark_timer_initialize();
-  benchmark_timer_read();
-  benchmark_timer_initialize();
-  timer_overhead = benchmark_timer_read();
+  Timer_initialize();
+  Timer_read();
+  Timer_initialize();
+  timer_overhead = Timer_read();
 
   status = rtems_task_delete( RTEMS_SELF );
   directive_failed( status, "rtems_task_delete of RTEMS_SELF" );
@@ -103,7 +103,7 @@ rtems_task Task_1(
   Interrupt_nest = 0;
 
   /* Benchmark code */
-  benchmark_timer_initialize();
+  Timer_initialize();
   /* goes to Isr_handler */
   Cause_tm27_intr();
 
@@ -125,6 +125,6 @@ rtems_isr Isr_handler(
 )
 {
   /* See how long it took system to recognize interrupt */
-  Interrupt_enter_time = benchmark_timer_read();
+  Interrupt_enter_time = Timer_read();
   Clear_tm27_intr();
 }
