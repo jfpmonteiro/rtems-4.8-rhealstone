@@ -227,6 +227,14 @@ extern "C" {
   ( rtems_get_index( tid ) - \
      rtems_configuration_get_rtems_api_configuration()->number_of_initialization_tasks )
 
+#define rtems_test_assert(__exp) \
+  do { \
+    if (!(__exp)) { \
+      printf( "%s: %d %s\n", __FILE__, __LINE__, #__exp ); \
+      rtems_test_exit(0); \
+    } \
+  } while (0)
+
 static inline uint32_t   get_ticks_per_second( void )
 {
   rtems_interval ticks_per_second;
