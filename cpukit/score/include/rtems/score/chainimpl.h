@@ -302,7 +302,7 @@ RTEMS_INLINE_ROUTINE Chain_Node *_Chain_Head(
   Chain_Control *the_chain
 )
 {
-  return &the_chain->Head.Node;
+  return &the_chain->first;
 }
 
 /**
@@ -318,7 +318,7 @@ RTEMS_INLINE_ROUTINE const Chain_Node *_Chain_Immutable_head(
   const Chain_Control *the_chain
 )
 {
-  return &the_chain->Head.Node;
+  return &the_chain->first;
 }
 
 /**
@@ -334,7 +334,7 @@ RTEMS_INLINE_ROUTINE Chain_Node *_Chain_Tail(
   Chain_Control *the_chain
 )
 {
-  return &the_chain->Tail.Node;
+  return &the_chain->last;
 }
 
 /**
@@ -350,7 +350,7 @@ RTEMS_INLINE_ROUTINE const Chain_Node *_Chain_Immutable_tail(
   const Chain_Control *the_chain
 )
 {
-  return &the_chain->Tail.Node;
+  return &the_chain->last;
 }
 
 /**
