@@ -33,7 +33,7 @@ extern "C" {
 /**@{*/
 
 /*
- *  The definition of the Priority_bit_map_Word type is CPU dependent.
+ *  The definition of the Priority_Bit_map_control type is CPU dependent.
  *
  */
 
@@ -42,7 +42,7 @@ typedef struct {
    * @brief Each sixteen bit entry in this word is associated with one of the
    * sixteen entries in the bit map.
    */
-  Priority_bit_map_Word major_bit_map;
+  Priority_Bit_map_control major_bit_map;
 
   /**
    * @brief Each bit in the bit map indicates whether or not there are threads
@@ -52,7 +52,7 @@ typedef struct {
    * dependent as is the value of each bit used to indicate that threads are
    * ready at that priority.
    */
-  Priority_bit_map_Word bit_map[ 16 ];
+  Priority_Bit_map_control bit_map[ 16 ];
 } Priority_bit_map_Control;
 
 /**
@@ -61,15 +61,15 @@ typedef struct {
  */
 typedef struct {
   /** This is the address of minor bit map slot. */
-  Priority_bit_map_Word *minor;
+  Priority_Bit_map_control *minor;
   /** This is the priority bit map ready mask. */
-  Priority_bit_map_Word  ready_major;
+  Priority_Bit_map_control  ready_major;
   /** This is the priority bit map ready mask. */
-  Priority_bit_map_Word  ready_minor;
+  Priority_Bit_map_control  ready_minor;
   /** This is the priority bit map block mask. */
-  Priority_bit_map_Word  block_major;
+  Priority_Bit_map_control  block_major;
   /** This is the priority bit map block mask. */
-  Priority_bit_map_Word  block_minor;
+  Priority_Bit_map_control  block_minor;
 } Priority_bit_map_Information;
 
 /**@}*/
