@@ -31,7 +31,13 @@ include_rtems_score_HEADERS = include/rtems/score/address.h \
     include/rtems/score/threadq.h include/rtems/score/timespec.h \
     include/rtems/score/tod.h include/rtems/score/tqdata.h \
     include/rtems/score/userext.h include/rtems/score/watchdog.h \
-    include/rtems/score/wkspace.h include/rtems/score/cpuopts.h
+    include/rtems/score/wkspace.h include/rtems/score/cpuopts.h \
+	include/rtems/score/scheduler.h include/rtems/score/schedulerimpl.h \
+	include/rtems/score/schedulerpriority.h include/rtems/score/threadimpl.h \
+	include/rtems/score/prioritybitmap.h include/rtems/score/chainimpl.h \
+	include/rtems/score/schedulerpriorityimpl.h include/rtems/score/basedefs.h \
+	include/rtems/score/prioritybitmapimpl.h \
+	include/rtems/score/assert.h
 
 if HAS_MP
 # We only build multiprocessing related files if HAS_MP was defined

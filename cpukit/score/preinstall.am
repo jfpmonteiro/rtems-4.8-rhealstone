@@ -159,6 +159,46 @@ $(PROJECT_INCLUDE)/rtems/score/cpuopts.h: include/rtems/score/cpuopts.h $(PROJEC
 	$(INSTALL_DATA) $< $(PROJECT_INCLUDE)/rtems/score/cpuopts.h
 PREINSTALL_FILES += $(PROJECT_INCLUDE)/rtems/score/cpuopts.h
 
+$(PROJECT_INCLUDE)/rtems/score/scheduler.h: include/rtems/score/scheduler.h $(PROJECT_INCLUDE)/rtems/score/$(dirstamp)
+	$(INSTALL_DATA) $< $(PROJECT_INCLUDE)/rtems/score/scheduler.h
+PREINSTALL_FILES += $(PROJECT_INCLUDE)/rtems/score/scheduler.h
+
+$(PROJECT_INCLUDE)/rtems/score/schedulerimpl.h: include/rtems/score/schedulerimpl.h $(PROJECT_INCLUDE)/rtems/score/$(dirstamp)
+	$(INSTALL_DATA) $< $(PROJECT_INCLUDE)/rtems/score/schedulerimpl.h
+PREINSTALL_FILES += $(PROJECT_INCLUDE)/rtems/score/schedulerimpl.h
+
+$(PROJECT_INCLUDE)/rtems/score/schedulerpriority.h: include/rtems/score/schedulerpriority.h $(PROJECT_INCLUDE)/rtems/score/$(dirstamp)
+	$(INSTALL_DATA) $< $(PROJECT_INCLUDE)/rtems/score/schedulerpriority.h
+PREINSTALL_FILES += $(PROJECT_INCLUDE)/rtems/score/schedulerpriority.h
+
+$(PROJECT_INCLUDE)/rtems/score/threadimpl.h: include/rtems/score/threadimpl.h $(PROJECT_INCLUDE)/rtems/score/$(dirstamp)
+	$(INSTALL_DATA) $< $(PROJECT_INCLUDE)/rtems/score/threadimpl.h
+PREINSTALL_FILES += $(PROJECT_INCLUDE)/rtems/score/threadimpl.h
+
+$(PROJECT_INCLUDE)/rtems/score/prioritybitmap.h: include/rtems/score/prioritybitmap.h $(PROJECT_INCLUDE)/rtems/score/$(dirstamp)
+	$(INSTALL_DATA) $< $(PROJECT_INCLUDE)/rtems/score/prioritybitmap.h
+PREINSTALL_FILES += $(PROJECT_INCLUDE)/rtems/score/prioritybitmap.h
+
+$(PROJECT_INCLUDE)/rtems/score/chainimpl.h: include/rtems/score/chainimpl.h $(PROJECT_INCLUDE)/rtems/score/$(dirstamp)
+	$(INSTALL_DATA) $< $(PROJECT_INCLUDE)/rtems/score/chainimpl.h
+PREINSTALL_FILES += $(PROJECT_INCLUDE)/rtems/score/chainimpl.h
+
+$(PROJECT_INCLUDE)/rtems/score/schedulerpriorityimpl.h: include/rtems/score/schedulerpriorityimpl.h $(PROJECT_INCLUDE)/rtems/score/$(dirstamp)
+	$(INSTALL_DATA) $< $(PROJECT_INCLUDE)/rtems/score/schedulerpriorityimpl.h
+PREINSTALL_FILES += $(PROJECT_INCLUDE)/rtems/score/schedulerpriorityimpl.h
+
+$(PROJECT_INCLUDE)/rtems/score/basedefs.h: include/rtems/score/basedefs.h $(PROJECT_INCLUDE)/rtems/score/$(dirstamp)
+	$(INSTALL_DATA) $< $(PROJECT_INCLUDE)/rtems/score/basedefs.h
+PREINSTALL_FILES += $(PROJECT_INCLUDE)/rtems/score/basedefs.h
+
+$(PROJECT_INCLUDE)/rtems/score/prioritybitmapimpl.h: include/rtems/score/prioritybitmapimpl.h $(PROJECT_INCLUDE)/rtems/score/$(dirstamp)
+	$(INSTALL_DATA) $< $(PROJECT_INCLUDE)/rtems/score/prioritybitmapimpl.h
+PREINSTALL_FILES += $(PROJECT_INCLUDE)/rtems/score/prioritybitmapimpl.h
+
+$(PROJECT_INCLUDE)/rtems/score/assert.h: include/rtems/score/assert.h $(PROJECT_INCLUDE)/rtems/score/$(dirstamp)
+	$(INSTALL_DATA) $< $(PROJECT_INCLUDE)/rtems/score/assert.h
+PREINSTALL_FILES += $(PROJECT_INCLUDE)/rtems/score/assert.h
+
 if HAS_MP
 $(PROJECT_INCLUDE)/rtems/score/mpci.h: include/rtems/score/mpci.h $(PROJECT_INCLUDE)/rtems/score/$(dirstamp)
 	$(INSTALL_DATA) $< $(PROJECT_INCLUDE)/rtems/score/mpci.h

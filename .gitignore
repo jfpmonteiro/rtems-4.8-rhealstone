@@ -4,3 +4,4 @@ configure
 config.h.in
 Makefile.in
 bspopts.h.in
+preinstall.am
