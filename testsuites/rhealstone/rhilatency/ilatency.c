@@ -13,23 +13,11 @@
 #include "config.h"
 #endif
 
-#define CONFIGURE_INIT
 #include <timesys.h>
 /* #include <rtems/btimer.h> */
 #include <btimer.h>
-#include <rtems/score/schedulerpriorityimpl.h>
+/* #include <rtems/score/schedulerpriorityimpl.h> */
 #include <coverhd.h>
-
-/* configuration information */
-#define CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER
-#define CONFIGURE_APPLICATION_NEEDS_TIMER_DRIVER
-#define CONFIGURE_MAXIMUM_TASKS              2
-#define CONFIGURE_TICKS_PER_TIMESLICE        0
-#define CONFIGURE_RTEMS_INIT_TASKS_TABLE
-#define CONFIGURE_SCHEDULER_PRIORITY
-
-#include <rtems/confdefs.h>
-
 #include <bsp.h>
 
 #define _RTEMS_TMTEST27
@@ -63,14 +51,14 @@ rtems_task Init(
   /* TEST_BEGIN(); */
   printf("*** BEGIN OF TEST RHTASKSWITCH ***\n");
 
-  if (
-    _Scheduler_Table[ 0 ].Operations.initialize
-      != _Scheduler_priority_Initialize
-  ) {
-    puts( "  Error ==> " );
-    puts( "Test only supported for deterministic priority scheduler\n" );
-    rtems_test_exit( 0 );
-  }
+  /* if ( */
+  /*   _Scheduler_Table[ 0 ].Operations.initialize */
+  /*     != _Scheduler_priority_Initialize */
+  /* ) { */
+  /*   puts( "  Error ==> " ); */
+  /*   puts( "Test only supported for deterministic priority scheduler\n" ); */
+  /*   rtems_test_exit( 0 ); */
+  /* } */
 
 #define LOW_PRIORITY (RTEMS_MAXIMUM_PRIORITY - 1u)
   status = rtems_task_create(
@@ -128,3 +116,14 @@ rtems_isr Isr_handler(
   Interrupt_enter_time = Timer_read();
   Clear_tm27_intr();
 }
+
+/* configuration information */
+#define CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER
+#define CONFIGURE_APPLICATION_NEEDS_TIMER_DRIVER
+#define CONFIGURE_MAXIMUM_TASKS              2
+#define CONFIGURE_TICKS_PER_TIMESLICE        0
+#define CONFIGURE_RTEMS_INIT_TASKS_TABLE
+#define CONFIGURE_SCHEDULER_PRIORITY
+
+#define CONFIGURE_INIT
+#include <rtems/confdefs.h>
