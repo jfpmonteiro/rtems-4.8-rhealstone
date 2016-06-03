@@ -56,7 +56,7 @@ void Timer_initialize( void )
 }
 
 /*
- *  The following controls the behavior of Read_timer().
+ *  The following controls the behavior of Timer_read().
  *
  *  FIND_AVG_OVERHEAD *  instructs the routine to return the "raw" count.
  *

@@ -79,9 +79,9 @@ rtems_task Init(
   directive_failed( status, "rtems_task_start of Task_2" );
 
   Timer_initialize();
-  Read_timer();
+  Timer_read();
   Timer_initialize();
-  timer_overhead = Read_timer();
+  timer_overhead = Timer_read();
 
   status = rtems_task_delete( RTEMS_SELF );
   directive_failed( status, "rtems_task_delete of RTEMS_SELF" );
@@ -110,7 +110,7 @@ rtems_task Task_1(
 #if (MUST_WAIT_FOR_INTERRUPT == 1)
   while ( Interrupt_occurred == 0 );
 #endif
-  Interrupt_return_time = Read_timer();
+  Interrupt_return_time = Timer_read();
 
   put_time(
     "interrupt entry overhead: returns to interrupted task",
@@ -144,7 +144,7 @@ rtems_task Task_1(
 #if (MUST_WAIT_FOR_INTERRUPT == 1)
   while ( Interrupt_occurred == 0 );
 #endif
-  Interrupt_return_time = Read_timer();
+  Interrupt_return_time = Timer_read();
 
   _Thread_Dispatch_disable_level = 0;
 
@@ -201,7 +201,7 @@ rtems_task Task_2(
 #if (MUST_WAIT_FOR_INTERRUPT == 1)
   while ( Interrupt_occurred == 0 );
 #endif
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "interrupt entry overhead: returns to preempting task",
@@ -246,7 +246,7 @@ rtems_isr Isr_handler(
   rtems_vector_number vector
 )
 {
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   Interrupt_occurred = 1;
   Isr_handler_inner();
@@ -272,7 +272,7 @@ void Isr_handler_inner( void )
 #if (MUST_WAIT_FOR_INTERRUPT == 1)
        while ( Interrupt_occurred == 0 );
 #endif
-      Interrupt_return_nested_time = Read_timer();
+      Interrupt_return_nested_time = Timer_read();
       break;
     case 2:
       Interrupt_enter_nested_time = end_time;

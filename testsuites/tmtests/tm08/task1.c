@@ -84,7 +84,7 @@ rtems_task test_task(
   Timer_initialize();
     for ( index=1 ; index <= OPERATION_COUNT ; index++ )
       (void) Empty_function();
-  overhead = Read_timer();
+  overhead = Timer_read();
 
   Timer_initialize();
     for ( index=1 ; index <= OPERATION_COUNT ; index++ )
@@ -93,7 +93,7 @@ rtems_task test_task(
                RTEMS_CURRENT_PRIORITY,
                &old_priority
              );
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_task_set_priority: obtain current priority",
@@ -106,7 +106,7 @@ rtems_task test_task(
   Timer_initialize();
     for ( index=1 ; index <= OPERATION_COUNT ; index++ )
       (void) rtems_task_set_priority( Test_task_id, 253, &old_priority );
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_task_set_priority: returns to caller",
@@ -123,7 +123,7 @@ rtems_task test_task(
         RTEMS_CURRENT_MODE,
         &old_mode
       );
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_task_mode: obtain current mode",
@@ -146,7 +146,7 @@ rtems_task test_task(
         &old_mode
       );
     }
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_task_mode: no reschedule",
@@ -158,7 +158,7 @@ rtems_task test_task(
 
   Timer_initialize();                 /* must be one host */
     (void) rtems_task_mode( RTEMS_NO_ASR, RTEMS_ASR_MASK, &old_mode );
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_task_mode: reschedule -- returns to caller",
@@ -181,7 +181,7 @@ rtems_task test_task(
   Timer_initialize();
     for ( index=1 ; index <= OPERATION_COUNT ; index++ )
       (void) rtems_task_set_note( Test_task_id, 8, 10 );
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_task_set_note",
@@ -194,7 +194,7 @@ rtems_task test_task(
   Timer_initialize();
     for ( index=1 ; index <= OPERATION_COUNT ; index++ )
       (void) rtems_task_get_note( Test_task_id, 8, &old_note );
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_task_get_note",
@@ -209,7 +209,7 @@ rtems_task test_task(
   Timer_initialize();
     for ( index=1 ; index <= OPERATION_COUNT ; index++ )
       (void) rtems_clock_set( &time );
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_clock_set",
@@ -222,7 +222,7 @@ rtems_task test_task(
   Timer_initialize();
     for ( index=1 ; index <= OPERATION_COUNT ; index++ )
       (void) rtems_clock_get( RTEMS_CLOCK_GET_TOD, &time );
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_clock_get",
@@ -240,7 +240,7 @@ rtems_task test_task1(
   rtems_task_argument argument
 )
 {
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_task_mode: reschedule -- preempts caller",

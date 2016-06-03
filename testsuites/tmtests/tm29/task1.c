@@ -41,7 +41,7 @@ rtems_task Init(
 
   Timer_initialize();
     (void) rtems_rate_monotonic_create( Period_name, &id );
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_rate_monotonic_create",
@@ -53,7 +53,7 @@ rtems_task Init(
 
   Timer_initialize();
     (void) rtems_rate_monotonic_period( id, 10 );
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_rate_monotonic_period: initiate period -- returns to caller",
@@ -65,7 +65,7 @@ rtems_task Init(
 
   Timer_initialize();
     (void) rtems_rate_monotonic_period( id, RTEMS_PERIOD_STATUS );
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_rate_monotonic_period: obtain status",
@@ -77,7 +77,7 @@ rtems_task Init(
 
   Timer_initialize();
     (void) rtems_rate_monotonic_cancel( id );
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_rate_monotonic_cancel",
@@ -89,7 +89,7 @@ rtems_task Init(
 
   Timer_initialize();
     (void) rtems_rate_monotonic_delete( id );
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_rate_monotonic_delete: inactive",
@@ -107,7 +107,7 @@ rtems_task Init(
 
   Timer_initialize();
     rtems_rate_monotonic_delete( id );
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_rate_monotonic_delete: active",
@@ -186,12 +186,12 @@ rtems_task Low_task(
 {
   uint32_t   index;
 
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   Timer_initialize();
     for ( index=1 ; index <= OPERATION_COUNT ; index++ )
       (void) Empty_function();
-  overhead = Read_timer();
+  overhead = Timer_read();
 
   put_time(
     "rtems_rate_monotonic_period: conclude periods -- caller blocks",

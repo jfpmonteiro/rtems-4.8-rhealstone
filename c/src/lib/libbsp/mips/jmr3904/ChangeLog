@@ -384,7 +384,7 @@
 	getting uncontrolled interrupt nesting in tm27.
 	* timer/timer.c (Timer_Initialize): Added an extra reset and
 	changed the ITMR register so we will never get an interrupt.
-	(Read_timer): Fixed so the timer actually stops before it
+	(Timer_read): Fixed so the timer actually stops before it
 	is read.  Before some times reported were outraguously high.
 	* start/start.S: Major clean including using stack in linkcmds,
 	deleting unused code, and zeroing the BSS using the linkcmds

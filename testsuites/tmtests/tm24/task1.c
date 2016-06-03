@@ -76,12 +76,12 @@ rtems_task High_task(
   Timer_initialize();
     for ( index=1 ; index <= OPERATION_COUNT ; index++ )
       (void) Empty_function();
-  overhead = Read_timer();
+  overhead = Timer_read();
 
   Timer_initialize();
     for ( index=1 ; index <= OPERATION_COUNT ; index++ )
       (void) rtems_task_wake_after( RTEMS_YIELD_PROCESSOR );
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_task_wake_after: yield -- returns to caller",
@@ -106,7 +106,7 @@ rtems_task Tasks(
   if ( Task_count == 1 )
     Timer_initialize();
   else if ( Task_count == OPERATION_COUNT ) {
-    end_time = Read_timer();
+    end_time = Timer_read();
 
     put_time(
       "rtems_task_wake_after: yields -- preempts caller",

@@ -81,7 +81,7 @@ void test_init()
   Timer_initialize();
     for ( index=1 ; index <= OPERATION_COUNT ; index++ )
       (void) Empty_function();
-  overhead = Read_timer();
+  overhead = Timer_read();
 
   Timer_initialize();
     for ( index=1 ; index <= OPERATION_COUNT ; index++ )
@@ -94,7 +94,7 @@ void test_init()
                );
     }
 
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_event_receive: obtain current events",
@@ -115,7 +115,7 @@ void test_init()
                &event_out
              );
     }
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_event_receive: not available -- NO_WAIT",
@@ -133,7 +133,7 @@ rtems_task Low_task(
   uint32_t    index;
   rtems_event_set   event_out;
 
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_event_receive: not available -- caller blocks",
@@ -146,12 +146,12 @@ rtems_task Low_task(
   Timer_initialize();
     for ( index=1 ; index <= OPERATION_COUNT ; index++ )
       (void) Empty_function();
-  overhead = Read_timer();
+  overhead = Timer_read();
 
   Timer_initialize();
     for ( index=1 ; index <= OPERATION_COUNT ; index++ )
       (void) rtems_event_send( RTEMS_SELF, RTEMS_EVENT_16 );
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_event_send: no task readied",
@@ -168,7 +168,7 @@ rtems_task Low_task(
              RTEMS_NO_TIMEOUT,
              &event_out
            );
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_event_receive: available",
@@ -181,7 +181,7 @@ rtems_task Low_task(
   Timer_initialize();
     for ( index=1 ; index <= OPERATION_COUNT ; index++ )
       (void) rtems_event_send( Task_id[ index ], RTEMS_EVENT_16 );
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_event_send: task readied -- returns to caller",

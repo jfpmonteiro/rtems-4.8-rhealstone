@@ -86,7 +86,7 @@ rtems_task High_task(
 
   (void) rtems_task_suspend( RTEMS_SELF );
 
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_task_resume: task readied -- preempts caller",
@@ -115,7 +115,7 @@ rtems_task Low_task(
 )
 {
 
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_task_suspend: calling task",

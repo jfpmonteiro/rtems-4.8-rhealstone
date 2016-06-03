@@ -250,7 +250,7 @@ void Timer_initialize (void)
 }
 
 /******************************************************
-  Name: Read_timer
+  Name: Timer_read
   Input parameters: -
   Output parameters: -
   Description: Return timer value in microsecond units

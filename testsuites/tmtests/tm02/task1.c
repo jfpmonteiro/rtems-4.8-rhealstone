@@ -142,7 +142,7 @@ rtems_task Low_task(
   rtems_task_argument argument
 )
 {
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_semaphore_obtain: not available -- caller blocks",

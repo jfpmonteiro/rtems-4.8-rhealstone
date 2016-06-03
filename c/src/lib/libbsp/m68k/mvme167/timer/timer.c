@@ -2,7 +2,7 @@
  *
  *  This file manages the benchmark timer used by the RTEMS Timing Test Suite.
  *  Each measured time period is demarcated by calls to Timer_initialize() and
- *  Read_timer().  Read_timer() usually returns the number of microseconds
+ *  Timer_read().  Timer_read() usually returns the number of microseconds
  *  since Timer_initialize() exitted.
  *
  *  These functions are prototyped in rtems/c/src/lib/include/timerdrv.h and

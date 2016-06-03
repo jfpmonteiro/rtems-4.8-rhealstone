@@ -83,7 +83,7 @@ rtems_task Test_task(
       RTEMS_NO_PRIORITY,
       &smid
     );
-  end_time = Read_timer();
+  end_time = Timer_read();
   put_time(
     "rtems_semaphore_create",
     end_time,
@@ -96,7 +96,7 @@ rtems_task Test_task(
 
   Timer_initialize();
     (void) rtems_semaphore_delete( smid );
-  end_time = Read_timer();
+  end_time = Timer_read();
   put_time(
     "rtems_semaphore_delete",
     end_time,
@@ -118,7 +118,7 @@ rtems_task Test_task(
     Timer_initialize();
       for ( index = 1 ; index<=OPERATION_COUNT ; index++ )
         (void) Empty_function();
-    end_time = Read_timer();
+    end_time = Timer_read();
 
     semaphore_obtain_loop_time  += end_time;
     semaphore_release_loop_time += end_time;
@@ -132,7 +132,7 @@ rtems_task Test_task(
           RTEMS_DEFAULT_OPTIONS,
           RTEMS_NO_TIMEOUT
         );
-    end_time = Read_timer();
+    end_time = Timer_read();
 
     semaphore_obtain_time += end_time;
 
@@ -141,7 +141,7 @@ rtems_task Test_task(
     Timer_initialize();
       for ( index = 1 ; index<=OPERATION_COUNT ; index++ )
         (void) rtems_semaphore_release( smid );
-    end_time = Read_timer();
+    end_time = Timer_read();
 
     semaphore_release_time += end_time;
 
@@ -149,12 +149,12 @@ rtems_task Test_task(
     Timer_initialize();
       for ( index = 1 ; index<=OPERATION_COUNT ; index++ )
         rtems_semaphore_obtain( smid, RTEMS_NO_WAIT, RTEMS_NO_TIMEOUT );
-    semaphore_obtain_no_wait_time += Read_timer();
+    semaphore_obtain_no_wait_time += Timer_read();
 
     Timer_initialize();
       for ( index = 1 ; index<=OPERATION_COUNT ; index++ )
         rtems_semaphore_release( smid );
-    end_time = Read_timer();
+    end_time = Timer_read();
 
     semaphore_release_time += end_time;
   }

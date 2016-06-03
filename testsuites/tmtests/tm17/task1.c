@@ -106,12 +106,12 @@ rtems_task Last_task(
 {
   uint32_t   index;
 
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   Timer_initialize();
     for ( index=1 ; index <= OPERATION_COUNT ; index++ )
       (void) Empty_function();
-  overhead = Read_timer();
+  overhead = Timer_read();
 
   put_time(
     "rtems_task_set_priority: preempts caller",

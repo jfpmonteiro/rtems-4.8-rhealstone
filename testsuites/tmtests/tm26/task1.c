@@ -196,27 +196,27 @@ rtems_task High_task(
 
   Timer_initialize();
     rtems_interrupt_disable( level );
-  isr_disable_time = Read_timer();
+  isr_disable_time = Timer_read();
 
   Timer_initialize();
     rtems_interrupt_flash( level );
-  isr_flash_time = Read_timer();
+  isr_flash_time = Timer_read();
 
   Timer_initialize();
     rtems_interrupt_enable( level );
-  isr_enable_time = Read_timer();
+  isr_enable_time = Timer_read();
 
   Timer_initialize();
     _Thread_Disable_dispatch();
-  thread_disable_dispatch_time = Read_timer();
+  thread_disable_dispatch_time = Timer_read();
 
   Timer_initialize();
     _Thread_Enable_dispatch();
-  thread_enable_dispatch_time = Read_timer();
+  thread_enable_dispatch_time = Timer_read();
 
   Timer_initialize();
     _Thread_Set_state( _Thread_Executing, STATES_SUSPENDED );
-  thread_set_state_time = Read_timer();
+  thread_set_state_time = Timer_read();
 
   _Context_Switch_necessary = TRUE;
 
@@ -228,7 +228,7 @@ rtems_task Middle_task(
   rtems_task_argument argument
 )
 {
-  thread_dispatch_no_fp_time = Read_timer();
+  thread_dispatch_no_fp_time = Timer_read();
 
   _Thread_Set_state( _Thread_Executing, STATES_SUSPENDED );
 
@@ -256,7 +256,7 @@ rtems_task Low_task(
 {
   Thread_Control *executing;
 
-  context_switch_no_fp_time = Read_timer();
+  context_switch_no_fp_time = Timer_read();
 
   executing    = _Thread_Executing;
 
@@ -265,11 +265,11 @@ rtems_task Low_task(
   Timer_initialize();
     _Context_Switch( &executing->Registers, &executing->Registers );
 
-  context_switch_self_time = Read_timer();
+  context_switch_self_time = Timer_read();
 
   _Context_Switch(&executing->Registers, &Middle_tcb->Registers);
 
-  context_switch_another_task_time = Read_timer();
+  context_switch_another_task_time = Timer_read();
 
   _Thread_Executing =
         (Thread_Control *) _Thread_Ready_chain[201].first;
@@ -294,7 +294,7 @@ rtems_task Floating_point_task_1(
   Thread_Control *executing;
   FP_DECLARE;
 
-  context_switch_restore_1st_fp_time = Read_timer();
+  context_switch_restore_1st_fp_time = Timer_read();
 
   executing = _Thread_Executing;
 
@@ -315,7 +315,7 @@ rtems_task Floating_point_task_1(
     _Context_Switch( &executing->Registers, &_Thread_Executing->Registers );
   /* switch to Floating_point_task_2 */
 
-  context_switch_save_idle_restore_initted_time = Read_timer();
+  context_switch_save_idle_restore_initted_time = Timer_read();
 
   FP_LOAD( 1.0 );
 
@@ -346,7 +346,7 @@ rtems_task Floating_point_task_2(
   Thread_Control *executing;
   FP_DECLARE;
 
-  context_switch_save_restore_idle_time = Read_timer();
+  context_switch_save_restore_idle_time = Timer_read();
 
   executing = _Thread_Executing;
 
@@ -369,7 +369,7 @@ rtems_task Floating_point_task_2(
     _Context_Switch( &executing->Registers, &_Thread_Executing->Registers );
   /* switch to Floating_point_task_1 */
 
-  context_switch_save_restore_initted_time = Read_timer();
+  context_switch_save_restore_initted_time = Timer_read();
 
   complete_test();
 }
@@ -381,41 +381,41 @@ void complete_test( void )
 
   Timer_initialize();
     _Thread_Resume( Middle_tcb, TRUE );
-  thread_resume_time = Read_timer();
+  thread_resume_time = Timer_read();
 
   _Thread_Set_state( Middle_tcb, STATES_WAITING_FOR_MESSAGE );
 
   Timer_initialize();
     _Thread_Unblock( Middle_tcb );
-  thread_unblock_time = Read_timer();
+  thread_unblock_time = Timer_read();
 
   _Thread_Set_state( Middle_tcb, STATES_WAITING_FOR_MESSAGE );
 
   Timer_initialize();
     _Thread_Ready( Middle_tcb );
-  thread_ready_time = Read_timer();
+  thread_ready_time = Timer_read();
 
   Timer_initialize();
     for ( index=1 ; index <= OPERATION_COUNT ; index++ )
       (void) Empty_function();
-  overhead = Read_timer();
+  overhead = Timer_read();
 
   task_id = Middle_tcb->Object.id;
 
   Timer_initialize();
     for ( index=1 ; index <= OPERATION_COUNT ; index++ )
       (void) _Thread_Get( task_id, &location );
-  thread_get_time = Read_timer();
+  thread_get_time = Timer_read();
 
   Timer_initialize();
     for ( index=1 ; index <= OPERATION_COUNT ; index++ )
       (void) _Semaphore_Get( Semaphore_id, &location );
-  semaphore_get_time = Read_timer();
+  semaphore_get_time = Timer_read();
 
   Timer_initialize();
     for ( index=1 ; index <= OPERATION_COUNT ; index++ )
       (void) _Thread_Get( 0x3, &location );
-  thread_get_invalid_time = Read_timer();
+  thread_get_invalid_time = Timer_read();
 
   /*
    *  This is the running task and we have tricked RTEMS out enough where

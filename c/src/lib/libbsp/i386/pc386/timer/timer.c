@@ -62,7 +62,7 @@ volatile uint32_t         Ttimer_val;
 rtems_boolean    	  Timer_driver_Find_average_overhead = TRUE;
 volatile unsigned int     fastLoop1ms, slowLoop1ms;
 void (*Timer_initialize_function)(void) = 0;
-uint32_t (*Read_timer_function)(void) = 0;
+uint32_t (*Timer_read_function)(void) = 0;
 void (*Timer_exit_function)(void) = 0;
 
 /*-------------------------------------------------------------------------+
@@ -133,7 +133,7 @@ tsc_timer_initialize(void)
 } /* tsc_timer_initialize */
 
 /*-------------------------------------------------------------------------+
-|         Function: Read_timer
+|         Function: Timer_read
 |      Description: Read hardware timer value.
 | Global Variables: Ttimer_val, Timer_driver_Find_average_overhead.
 |        Arguments: None.
@@ -251,7 +251,7 @@ i386_timer_initialize(void)
 } /* Timer_initialize */
 
 /*-------------------------------------------------------------------------+
-|         Function: Read_timer
+|         Function: Timer_read
 |      Description: Read hardware timer value.
 | Global Variables: Ttimer_val, Timer_driver_Find_average_overhead.
 |        Arguments: None.
@@ -293,7 +293,7 @@ Timer_initialize(void)
             printk("TSC: timer initialization\n");
 #endif /* DEBUG */
             Timer_initialize_function = &tsc_timer_initialize;
-            Read_timer_function = &tsc_read_timer;
+            Timer_read_function = &tsc_read_timer;
             Timer_exit_function = &tsc_timer_exit;
         }
         else {
@@ -301,7 +301,7 @@ Timer_initialize(void)
             printk("ISR: timer initialization\n");
 #endif /* DEBUG */
             Timer_initialize_function = &i386_timer_initialize;
-            Read_timer_function = &i386_read_timer;
+            Timer_read_function = &i386_read_timer;
             Timer_exit_function = &i386_timer_exit;
         }
         First = FALSE;
@@ -312,7 +312,7 @@ Timer_initialize(void)
 uint32_t
 Timer_read()
 {
-    return (*Read_timer_function)();
+    return (*Timer_read_function)();
 }
 
 void

@@ -93,7 +93,7 @@ rtems_task Low_task(
 {
   Timer_initialize();
     (void) rtems_clock_tick();
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_clock_tick",

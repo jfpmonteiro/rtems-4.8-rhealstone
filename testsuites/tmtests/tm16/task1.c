@@ -132,7 +132,7 @@ rtems_task High_task(
             &event_out
           );
 
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_event_send: task readied -- preempts caller",

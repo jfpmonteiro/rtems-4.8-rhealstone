@@ -79,12 +79,12 @@ rtems_task Task_1(
   if ( Task_restarted != 0 )
     (void) rtems_task_restart( RTEMS_SELF, 0 );
 
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   Timer_initialize();
     for ( index=1 ; index <= OPERATION_COUNT ; index++ )
       (void) Empty_function();
-  overhead = Read_timer();
+  overhead = Timer_read();
 
   put_time(
     "rtems_task_restart: calling task",
@@ -112,7 +112,7 @@ rtems_task Task_1(
   Timer_initialize();
     for ( index=1 ; index <= OPERATION_COUNT ; index++ )
       (void) rtems_task_suspend( Task_id[ index ] );
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_task_suspend: returns to caller",
@@ -125,7 +125,7 @@ rtems_task Task_1(
   Timer_initialize();
     for ( index=1 ; index <= OPERATION_COUNT ; index++ )
       (void) rtems_task_resume( Task_id[ index ] );
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_task_resume: task readied -- returns to caller",
@@ -138,7 +138,7 @@ rtems_task Task_1(
   Timer_initialize();
     for ( index=1 ; index <= OPERATION_COUNT ; index++ )
       (void) rtems_task_delete( Task_id[ index ] );
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_task_delete: ready task",

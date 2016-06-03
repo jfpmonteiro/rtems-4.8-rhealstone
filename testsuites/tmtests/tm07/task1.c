@@ -80,7 +80,7 @@ rtems_task High_task(
 )
 {
   if ( argument != 0 ) {
-    end_time = Read_timer();
+    end_time = Timer_read();
 
     put_time(
       "rtems_task_restart: suspended task -- preempts caller",

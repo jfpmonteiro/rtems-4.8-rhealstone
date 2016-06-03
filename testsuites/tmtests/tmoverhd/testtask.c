@@ -96,7 +96,7 @@ rtems_task Task_1(
   Timer_initialize();
     for ( index=1 ; index <= OPERATION_COUNT ; index++ )
       (void) rtems_initialize_executive( rtems_configuration_get_table(), &cpu_table );
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_initialize_executive",
@@ -111,7 +111,7 @@ rtems_task Task_1(
   Timer_initialize();
     for ( index=1 ; index <= OPERATION_COUNT ; index++ )
       (void) rtems_shutdown_executive( error );
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_shutdown_executive",
@@ -133,7 +133,7 @@ rtems_task Task_1(
                RTEMS_DEFAULT_ATTRIBUTES,
                &id
             );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_task_create",
@@ -148,7 +148,7 @@ rtems_task Task_1(
       Timer_initialize();
          for ( index = 1 ; index <= OPERATION_COUNT ; index ++ )
             (void) rtems_task_ident( name, RTEMS_SEARCH_ALL_NODES, id );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_task_ident",
@@ -163,7 +163,7 @@ rtems_task Task_1(
       Timer_initialize();
          for ( index = 1 ; index <= OPERATION_COUNT ; index ++ )
             (void) rtems_task_start( id, Task_1, 0 );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_task_start",
@@ -178,7 +178,7 @@ rtems_task Task_1(
       Timer_initialize();
          for ( index = 1 ; index <= OPERATION_COUNT ; index ++ )
             (void) rtems_task_restart( id, 0 );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_task_restart",
@@ -193,7 +193,7 @@ rtems_task Task_1(
       Timer_initialize();
          for ( index = 1 ; index <= OPERATION_COUNT ; index ++ )
             (void) rtems_task_delete( id );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_task_delete",
@@ -208,7 +208,7 @@ rtems_task Task_1(
       Timer_initialize();
          for ( index = 1 ; index <= OPERATION_COUNT ; index ++ )
             (void) rtems_task_suspend( id );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_task_suspend",
@@ -223,7 +223,7 @@ rtems_task Task_1(
       Timer_initialize();
          for ( index = 1 ; index <= OPERATION_COUNT ; index ++ )
             (void) rtems_task_resume( id );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_task_resume",
@@ -238,7 +238,7 @@ rtems_task Task_1(
       Timer_initialize();
          for ( index = 1 ; index <= OPERATION_COUNT ; index ++ )
             (void) rtems_task_set_priority( id, in_priority, &out_priority );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_task_set_priority",
@@ -253,7 +253,7 @@ rtems_task Task_1(
       Timer_initialize();
          for ( index = 1 ; index <= OPERATION_COUNT ; index ++ )
             (void) rtems_task_mode( in_mode, mask, &out_mode );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_task_mode",
@@ -268,7 +268,7 @@ rtems_task Task_1(
       Timer_initialize();
          for ( index = 1 ; index <= OPERATION_COUNT ; index ++ )
             (void) rtems_task_get_note( id, 1, note );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_task_get_note",
@@ -283,7 +283,7 @@ rtems_task Task_1(
       Timer_initialize();
          for ( index = 1 ; index <= OPERATION_COUNT ; index ++ )
             (void) rtems_task_set_note( id, 1, note );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_task_set_note",
@@ -298,7 +298,7 @@ rtems_task Task_1(
       Timer_initialize();
          for ( index = 1 ; index <= OPERATION_COUNT ; index ++ )
             (void) rtems_task_wake_when( time );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_task_wake_when",
@@ -313,7 +313,7 @@ rtems_task Task_1(
       Timer_initialize();
          for ( index = 1 ; index <= OPERATION_COUNT ; index ++ )
             (void) rtems_task_wake_after( timeout );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_task_wake_after",
@@ -328,7 +328,7 @@ rtems_task Task_1(
       Timer_initialize();
          for ( index = 1 ; index <= OPERATION_COUNT ; index ++ )
             (void) rtems_interrupt_catch( Isr_handler, 5, address_1 );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_interrupt_catch",
@@ -343,7 +343,7 @@ rtems_task Task_1(
       Timer_initialize();
          for ( index = 1 ; index <= OPERATION_COUNT ; index ++ )
             (void) rtems_clock_get( options, time );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_clock_get",
@@ -358,7 +358,7 @@ rtems_task Task_1(
       Timer_initialize();
          for ( index = 1 ; index <= OPERATION_COUNT ; index ++ )
             (void) rtems_clock_set( time );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_clock_set",
@@ -373,7 +373,7 @@ rtems_task Task_1(
       Timer_initialize();
          for ( index = 1 ; index <= OPERATION_COUNT ; index ++ )
            (void) rtems_clock_tick();
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_clock_tick",
@@ -390,7 +390,7 @@ rtems_test_pause();
       Timer_initialize();
          for ( index = 1 ; index <= OPERATION_COUNT ; index ++ )
             (void) rtems_timer_create( name, &id );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_timer_create",
@@ -405,7 +405,7 @@ rtems_test_pause();
       Timer_initialize();
          for ( index = 1 ; index <= OPERATION_COUNT ; index ++ )
             (void) rtems_timer_delete( id );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_timer_delete",
@@ -420,7 +420,7 @@ rtems_test_pause();
       Timer_initialize();
          for ( index = 1 ; index <= OPERATION_COUNT ; index ++ )
             (void) rtems_timer_ident( name, id );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_timer_ident",
@@ -440,7 +440,7 @@ rtems_test_pause();
                Timer_handler,
                NULL
             );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_timer_fire_after",
@@ -460,7 +460,7 @@ rtems_test_pause();
                Timer_handler,
                NULL
             );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_timer_fire_when",
@@ -475,7 +475,7 @@ rtems_test_pause();
       Timer_initialize();
          for ( index = 1 ; index <= OPERATION_COUNT ; index ++ )
             (void) rtems_timer_reset( id );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_timer_reset",
@@ -490,7 +490,7 @@ rtems_test_pause();
       Timer_initialize();
          for ( index = 1 ; index <= OPERATION_COUNT ; index ++ )
             (void) rtems_timer_cancel( id );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_timer_cancel",
@@ -511,7 +511,7 @@ rtems_test_pause();
                RTEMS_NO_PRIORITY,
                &id
             );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_semaphore_create",
@@ -526,7 +526,7 @@ rtems_test_pause();
       Timer_initialize();
          for ( index = 1 ; index <= OPERATION_COUNT ; index ++ )
             (void) rtems_semaphore_delete( id );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_semaphore_delete",
@@ -541,7 +541,7 @@ rtems_test_pause();
       Timer_initialize();
          for ( index = 1 ; index <= OPERATION_COUNT ; index ++ )
             (void) rtems_semaphore_ident( name, RTEMS_SEARCH_ALL_NODES, id );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_semaphore_ident",
@@ -556,7 +556,7 @@ rtems_test_pause();
       Timer_initialize();
          for ( index = 1 ; index <= OPERATION_COUNT ; index ++ )
             (void) rtems_semaphore_obtain( id, RTEMS_DEFAULT_OPTIONS, timeout );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_semaphore_obtain",
@@ -571,7 +571,7 @@ rtems_test_pause();
       Timer_initialize();
          for ( index = 1 ; index <= OPERATION_COUNT ; index ++ )
             (void) rtems_semaphore_release( id );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_semaphore_release",
@@ -591,7 +591,7 @@ rtems_test_pause();
                RTEMS_DEFAULT_ATTRIBUTES,
                &id
             );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_message_queue_create",
@@ -610,7 +610,7 @@ rtems_test_pause();
               RTEMS_SEARCH_ALL_NODES,
               id
             );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_message_queue_ident",
@@ -625,7 +625,7 @@ rtems_test_pause();
       Timer_initialize();
          for ( index = 1 ; index <= OPERATION_COUNT ; index ++ )
             (void) rtems_message_queue_delete( id );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_message_queue_delete",
@@ -640,7 +640,7 @@ rtems_test_pause();
       Timer_initialize();
          for ( index = 1 ; index <= OPERATION_COUNT ; index ++ )
             (void) rtems_message_queue_send( id, (long (*)[4])buffer );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_message_queue_send",
@@ -655,7 +655,7 @@ rtems_test_pause();
       Timer_initialize();
          for ( index = 1 ; index <= OPERATION_COUNT ; index ++ )
             (void) rtems_message_queue_urgent( id, (long (*)[4])buffer );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_message_queue_urgent",
@@ -674,7 +674,7 @@ rtems_test_pause();
                (long (*)[4])buffer,
                &count
             );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_message_queue_broadcast",
@@ -694,7 +694,7 @@ rtems_test_pause();
                RTEMS_DEFAULT_OPTIONS,
                timeout
             );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_message_queue_receive",
@@ -709,7 +709,7 @@ rtems_test_pause();
       Timer_initialize();
          for ( index = 1 ; index <= OPERATION_COUNT ; index ++ )
             (void) rtems_message_queue_flush( id, &count );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_message_queue_flush",
@@ -726,7 +726,7 @@ rtems_test_pause();
       Timer_initialize();
          for ( index = 1 ; index <= OPERATION_COUNT ; index ++ )
             (void) rtems_event_send( id, events );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_event_send",
@@ -746,7 +746,7 @@ rtems_test_pause();
                timeout,
                &events
             );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_event_receive",
@@ -761,7 +761,7 @@ rtems_test_pause();
       Timer_initialize();
          for ( index = 1 ; index <= OPERATION_COUNT ; index ++ )
             (void) rtems_signal_catch( Asr_handler, RTEMS_DEFAULT_MODES );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_signal_catch",
@@ -776,7 +776,7 @@ rtems_test_pause();
       Timer_initialize();
          for ( index = 1 ; index <= OPERATION_COUNT ; index ++ )
             (void) rtems_signal_send( id, signals );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_signal_send",
@@ -798,7 +798,7 @@ rtems_test_pause();
                RTEMS_DEFAULT_ATTRIBUTES,
                &id
             );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_partition_create",
@@ -813,7 +813,7 @@ rtems_test_pause();
       Timer_initialize();
          for ( index = 1 ; index <= OPERATION_COUNT ; index ++ )
             (void) rtems_partition_ident( name, RTEMS_SEARCH_ALL_NODES, id );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_partition_ident",
@@ -828,7 +828,7 @@ rtems_test_pause();
       Timer_initialize();
          for ( index = 1 ; index <= OPERATION_COUNT ; index ++ )
             (void) rtems_partition_delete( id );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_partition_delete",
@@ -843,7 +843,7 @@ rtems_test_pause();
       Timer_initialize();
          for ( index = 1 ; index <= OPERATION_COUNT ; index ++ )
             (void) rtems_partition_get_buffer( id, address_1 );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_partition_get_buffer",
@@ -858,7 +858,7 @@ rtems_test_pause();
       Timer_initialize();
          for ( index = 1 ; index <= OPERATION_COUNT ; index ++ )
             (void) rtems_partition_return_buffer( id, address_1 );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_partition_return_buffer",
@@ -880,7 +880,7 @@ rtems_test_pause();
                RTEMS_DEFAULT_ATTRIBUTES,
                &id
             );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_region_create",
@@ -895,7 +895,7 @@ rtems_test_pause();
       Timer_initialize();
          for ( index = 1 ; index <= OPERATION_COUNT ; index ++ )
             (void) rtems_region_ident( name, id );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_region_ident",
@@ -910,7 +910,7 @@ rtems_test_pause();
       Timer_initialize();
          for ( index = 1 ; index <= OPERATION_COUNT ; index ++ )
             (void) rtems_region_delete( id );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_region_delete",
@@ -931,7 +931,7 @@ rtems_test_pause();
                timeout,
                &address_1
             );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_region_get_segment",
@@ -946,7 +946,7 @@ rtems_test_pause();
       Timer_initialize();
          for ( index = 1 ; index <= OPERATION_COUNT ; index ++ )
             (void) rtems_region_return_segment( id, address_1 );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_region_return_segment",
@@ -967,7 +967,7 @@ rtems_test_pause();
                0xff,
                &id
             );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_port_create",
@@ -982,7 +982,7 @@ rtems_test_pause();
       Timer_initialize();
          for ( index = 1 ; index <= OPERATION_COUNT ; index ++ )
             (void) rtems_port_ident( name, id );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_port_ident",
@@ -997,7 +997,7 @@ rtems_test_pause();
       Timer_initialize();
          for ( index = 1 ; index <= OPERATION_COUNT ; index ++ )
             (void) rtems_port_delete( id );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_port_delete",
@@ -1016,7 +1016,7 @@ rtems_test_pause();
                &External_port_area[ 7 ],
                address_1
             );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_port_external_to_internal",
@@ -1035,7 +1035,7 @@ rtems_test_pause();
                &Internal_port_area[ 7 ],
                address_1
             );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_port_internal_to_external",
@@ -1057,7 +1057,7 @@ rtems_test_pause();
                address_1,
                &io_result
             );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_io_initialize",
@@ -1077,7 +1077,7 @@ rtems_test_pause();
                address_1,
                &io_result
             );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_io_open",
@@ -1097,7 +1097,7 @@ rtems_test_pause();
                address_1,
                &io_result
             );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_io_close",
@@ -1117,7 +1117,7 @@ rtems_test_pause();
                address_1,
                &io_result
             );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_io_read",
@@ -1137,7 +1137,7 @@ rtems_test_pause();
                address_1,
                &io_result
             );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_io_write",
@@ -1157,7 +1157,7 @@ rtems_test_pause();
                address_1,
                &io_result
             );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_io_control",
@@ -1172,7 +1172,7 @@ rtems_test_pause();
       Timer_initialize();
          for ( index = 1 ; index <= OPERATION_COUNT ; index ++ )
             (void) rtems_fatal_error_occurred( error );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_fatal_error_occurred",
@@ -1187,7 +1187,7 @@ rtems_test_pause();
       Timer_initialize();
          for ( index = 1 ; index <= OPERATION_COUNT ; index ++ )
             (void) rtems_rate_monotonic_create( name, &id );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_rate_monotonic_create",
@@ -1202,7 +1202,7 @@ rtems_test_pause();
       Timer_initialize();
          for ( index = 1 ; index <= OPERATION_COUNT ; index ++ )
             (void) rtems_rate_monotonic_ident( name, id );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_rate_monotonic_ident",
@@ -1217,7 +1217,7 @@ rtems_test_pause();
       Timer_initialize();
          for ( index = 1 ; index <= OPERATION_COUNT ; index ++ )
             (void) rtems_rate_monotonic_delete( id );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_rate_monotonic_delete",
@@ -1232,7 +1232,7 @@ rtems_test_pause();
       Timer_initialize();
          for ( index = 1 ; index <= OPERATION_COUNT ; index ++ )
             (void) rtems_rate_monotonic_cancel( id );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_rate_monotonic_cancel",
@@ -1247,7 +1247,7 @@ rtems_test_pause();
       Timer_initialize();
          for ( index = 1 ; index <= OPERATION_COUNT ; index ++ )
             (void) rtems_rate_monotonic_period( id, timeout );
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_rate_monotonic_period",
@@ -1262,7 +1262,7 @@ rtems_test_pause();
       Timer_initialize();
          for ( index = 1 ; index <= OPERATION_COUNT ; index ++ )
             (void) rtems_multiprocessing_announce();
-      end_time = Read_timer();
+      end_time = Timer_read();
 
       put_time(
          "rtems_multiprocessing_announce",

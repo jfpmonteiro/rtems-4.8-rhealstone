@@ -60,7 +60,7 @@ rtems_task Test_task (
   Timer_initialize();
     for ( index=1 ; index <= OPERATION_COUNT ; index++ )
       (void) Empty_function();
-  overhead = Read_timer();
+  overhead = Timer_read();
 
   name = rtems_build_name( 'P', 'O', 'R', 'T' ),
 
@@ -72,7 +72,7 @@ rtems_task Test_task (
       0xff,
       &Port_id
     );
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_port_create",
@@ -89,7 +89,7 @@ rtems_task Test_task (
                &External_area[ 0xf ],
                &converted
              );
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_port_external_to_internal",
@@ -106,7 +106,7 @@ rtems_task Test_task (
                &Internal_area[ 0xf ],
                &converted
              );
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_port_internal_to_external",
@@ -118,7 +118,7 @@ rtems_task Test_task (
 
   Timer_initialize();
     rtems_port_delete( Port_id );
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_port_delete",

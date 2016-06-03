@@ -43,7 +43,7 @@ void ITRON_Init( void )
 
   Timer_initialize();
     (void) cre_sem( 1, &pk_csem );
-  end_time = Read_timer();
+  end_time = Timer_read();
   put_time(
     "cre_sem",
     end_time,
@@ -58,7 +58,7 @@ void ITRON_Init( void )
 
   Timer_initialize();
     (void) del_sem( 1 );
-  end_time = Read_timer();
+  end_time = Timer_read();
   put_time(
     "del_sem",
     end_time,
@@ -79,7 +79,7 @@ void ITRON_Init( void )
   Timer_initialize();
     for ( index = 1 ; index<=OPERATION_COUNT ; index++ )
       (void) preq_sem( 1 );
-  end_time = Read_timer();
+  end_time = Timer_read();
   put_time(
     "preq_sem (available)",
     end_time,
@@ -95,7 +95,7 @@ void ITRON_Init( void )
   Timer_initialize();
     for ( index = 1 ; index<=OPERATION_COUNT ; index++ )
       (void) preq_sem( 1 );
-  end_time = Read_timer();
+  end_time = Timer_read();
   put_time(
     "preq_sem (not available)",
     end_time,
@@ -111,7 +111,7 @@ void ITRON_Init( void )
   Timer_initialize();
     for ( index = 1 ; index<=OPERATION_COUNT ; index++ )
       (void) sig_sem( 1 );
-  end_time = Read_timer();
+  end_time = Timer_read();
   put_time(
     "sig_sem (no waiting tasks)",
     end_time,
@@ -127,7 +127,7 @@ void ITRON_Init( void )
   Timer_initialize();
     for ( index = 1 ; index<=OPERATION_COUNT ; index++ )
       (void) ref_sem( 1, &pk_rsem );
-  end_time = Read_timer();
+  end_time = Timer_read();
   put_time(
     "ref_sem",
     end_time,

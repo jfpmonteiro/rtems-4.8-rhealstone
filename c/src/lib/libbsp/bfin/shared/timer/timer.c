@@ -2,7 +2,7 @@
  *
  *  This file manages the benchmark timer used by the RTEMS Timing Test
  *  Suite.  Each measured time period is demarcated by calls to
- *  Timer_initialize() and Read_timer().  Read_timer() usually returns
+ *  Timer_initialize() and Timer_read().  Timer_read() usually returns
  *  the number of microseconds since Timer_initialize() exitted.
  *  
  *  Copyright (c) 2006 by Atos Automacao Industrial Ltda.
@@ -44,7 +44,7 @@ void Timer_initialize( void )
 }
 
 /*
- *  The following controls the behavior of Read_timer().
+ *  The following controls the behavior of Timer_read().
  *
  *  AVG_OVEREHAD is the overhead for starting and stopping the timer.  It
  *  is usually deducted from the number returned.

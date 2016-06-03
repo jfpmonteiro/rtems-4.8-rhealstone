@@ -61,7 +61,7 @@ rtems_task Test_task (
       RTEMS_DEFAULT_ATTRIBUTES,
       &Queue_id
     );
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_message_queue_create",
@@ -75,7 +75,7 @@ rtems_task Test_task (
 
   Timer_initialize();
     rtems_message_queue_delete( Queue_id );
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_message_queue_delete",
@@ -123,22 +123,22 @@ void queue_test()
     Timer_initialize();
       for ( index=1 ; index <= OPERATION_COUNT ; index++ )
         (void) Empty_function();
-    send_loop_time += Read_timer();
+    send_loop_time += Timer_read();
 
     Timer_initialize();
       for ( index=1 ; index <= OPERATION_COUNT ; index++ )
         (void) Empty_function();
-    urgent_loop_time += Read_timer();
+    urgent_loop_time += Timer_read();
 
     Timer_initialize();
       for ( index=1 ; index <= OPERATION_COUNT ; index++ )
         (void) Empty_function();
-    receive_loop_time += Read_timer();
+    receive_loop_time += Timer_read();
 
     Timer_initialize();
       for ( index=1 ; index <= OPERATION_COUNT ; index++ )
         (void) rtems_message_queue_send( Queue_id, buffer, MESSAGE_SIZE );
-    send_time += Read_timer();
+    send_time += Timer_read();
 
     Timer_initialize();
       for ( index=1 ; index <= OPERATION_COUNT ; index++ )
@@ -149,12 +149,12 @@ void queue_test()
                  RTEMS_DEFAULT_OPTIONS,
                  RTEMS_NO_TIMEOUT
                );
-    receive_time += Read_timer();
+    receive_time += Timer_read();
 
     Timer_initialize();
       for ( index=1 ; index <= OPERATION_COUNT ; index++ )
         (void) rtems_message_queue_urgent( Queue_id, buffer, MESSAGE_SIZE );
-    urgent_time += Read_timer();
+    urgent_time += Timer_read();
 
     Timer_initialize();
       for ( index=1 ; index <= OPERATION_COUNT ; index++ )
@@ -165,11 +165,11 @@ void queue_test()
                  RTEMS_DEFAULT_OPTIONS,
                  RTEMS_NO_TIMEOUT
                );
-    receive_time += Read_timer();
+    receive_time += Timer_read();
 
     Timer_initialize();
       rtems_message_queue_flush( Queue_id, &empty_flush_count );
-    empty_flush_time += Read_timer();
+    empty_flush_time += Timer_read();
 
     /* send one message to flush */
     status = rtems_message_queue_send(
@@ -181,7 +181,7 @@ void queue_test()
 
     Timer_initialize();
       rtems_message_queue_flush( Queue_id, &flush_count );
-    flush_time += Read_timer();
+    flush_time += Timer_read();
   }
 
   put_time(

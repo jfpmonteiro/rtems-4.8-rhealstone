@@ -73,7 +73,7 @@ rtems_task Task_1(
 rtems_test_pause();
 
   Timer_initialize();
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "NULL timer stopped at",
@@ -86,7 +86,7 @@ rtems_test_pause();
   Timer_initialize();
   for ( index = 1 ; index <= 1000 ; index++ )
     (void) Empty_function();
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "LOOP (1000) timer stopped at",
@@ -99,7 +99,7 @@ rtems_test_pause();
   Timer_initialize();
   for ( index = 1 ; index <= 10000 ; index++ )
     (void) Empty_function();
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "LOOP (10000) timer stopped at",
@@ -112,7 +112,7 @@ rtems_test_pause();
   Timer_initialize();
   for ( index = 1 ; index <= 50000 ; index++ )
     (void) Empty_function();
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "LOOP (50000) timer stopped at",
@@ -125,7 +125,7 @@ rtems_test_pause();
   Timer_initialize();
   for ( index = 1 ; index <= 100000 ; index++ )
     (void) Empty_function();
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "LOOP (100000) timer stopped at",
@@ -149,7 +149,7 @@ void check_read_timer()
 
   for ( index = 1 ; index <= OPERATION_COUNT ; index++ ) {
     Timer_initialize();
-    end_time = Read_timer();
+    end_time = Timer_read();
     if ( end_time > MAXIMUM_DISTRIBUTION ) {
       /*
        *  Under UNIX a simple process swap takes longer than we

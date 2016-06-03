@@ -3,7 +3,7 @@
  *
  *  This file manages the benchmark timer used by the RTEMS Timing Test
  *  Suite.  Each measured time period is demarcated by calls to
- *  Timer_initialize() and Read_timer().  Read_timer() usually returns
+ *  Timer_initialize() and Timer_read().  Timer_read() usually returns
  *  the number of microseconds since Timer_initialize() exitted.
  *
  *  NOTE: It is important that the timer start/stop overhead be
@@ -177,7 +177,7 @@ Timer_initialize(void)
 }
 
 /*
- *  The following controls the behavior of Read_timer().
+ *  The following controls the behavior of Timer_read().
  *
  *  AVG_OVERHEAD is the overhead for starting and stopping the timer.  It
  *  is usually deducted from the number returned.
@@ -191,7 +191,7 @@ Timer_initialize(void)
                              /* This value is in microseconds. */
 #define LEAST_VALID       0 /* 20 */ /* Don't trust a clicks value lower than this */
 
-/* Read_timer --
+/* Timer_read --
  *     Read timer value in microsecond units since timer start.
  *
  * PARAMETERS:
@@ -201,7 +201,7 @@ Timer_initialize(void)
  *     number of microseconds since timer has been started
  */
 int
-Read_timer(void)
+Timer_read(void)
 {
     uint32_t              clicks;
     uint32_t              ints;
@@ -257,7 +257,7 @@ Empty_function( void )
 
 /* Set_find_average_overhead --
  *     This routine is invoked by the "Check Timer" (tmck) test in the
- *     RTEMS Timing Test Suite. It makes the Read_timer routine not
+ *     RTEMS Timing Test Suite. It makes the Timer_read routine not
  *     subtract the overhead required to initialize and read the benchmark
  *     timer.
  *

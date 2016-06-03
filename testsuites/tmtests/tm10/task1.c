@@ -90,7 +90,7 @@ void test_init()
   Timer_initialize();
     for ( index=1 ; index <= OPERATION_COUNT ; index++ )
       (void) Empty_function();
-  overhead = Read_timer();
+  overhead = Timer_read();
 
   Timer_initialize();
     for ( index=1 ; index <= OPERATION_COUNT ; index++ )
@@ -101,7 +101,7 @@ void test_init()
                RTEMS_NO_WAIT,
                RTEMS_NO_TIMEOUT
              );
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_message_queue_receive: not available -- NO_WAIT",
@@ -149,7 +149,7 @@ rtems_task Low_task(
   rtems_task_argument argument
 )
 {
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_message_queue_receive: not available -- caller blocks",

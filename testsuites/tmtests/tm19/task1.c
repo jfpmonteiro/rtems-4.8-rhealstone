@@ -90,7 +90,7 @@ rtems_asr Process_asr_for_pass_1(
   rtems_signal_set signals
 )
 {
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_signal_send: signal to self",
@@ -123,7 +123,7 @@ rtems_task Task_1(
 
   Timer_initialize();
     (void) rtems_signal_catch( Process_asr_for_pass_1, RTEMS_DEFAULT_MODES );
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_signal_catch",
@@ -135,7 +135,7 @@ rtems_task Task_1(
 
   Timer_initialize();
     rtems_signal_send( Task_id[ 2 ], 1 );
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_signal_send: returns to caller",
@@ -150,7 +150,7 @@ rtems_task Task_1(
 
   /* end time is done is RTEMS_ASR */
 
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "exit ASR overhead: returns to calling task",
@@ -192,7 +192,7 @@ rtems_task Task_3(
 {
   (void) rtems_task_suspend( RTEMS_SELF );
 
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "exit ASR overhead: returns to preempting task",

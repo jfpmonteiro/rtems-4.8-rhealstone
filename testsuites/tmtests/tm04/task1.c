@@ -90,7 +90,7 @@ rtems_task Highest_task(
 
   if ( argument == 1 ) {
 
-    end_time = Read_timer();
+    end_time = Timer_read();
 
     put_time(
       "rtems_task_restart: blocked task -- preempts caller",
@@ -109,7 +109,7 @@ rtems_task Highest_task(
 
  } else if ( argument == 2 ) {
 
-  end_time = Read_timer();
+  end_time = Timer_read();
 
     put_time(
       "rtems_task_restart: ready task -- preempts caller",
@@ -151,12 +151,12 @@ rtems_task High_task(
   Timer_initialize();
     for ( index=1 ; index <= OPERATION_COUNT ; index++ )
       (void) Empty_function();
-  overhead = Read_timer();
+  overhead = Timer_read();
 
   Timer_initialize();
     for ( index=1 ; index <= OPERATION_COUNT ; index++ )
       rtems_semaphore_release( Semaphore_id );
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_semaphore_release: task readied -- returns to caller",
@@ -183,7 +183,7 @@ rtems_task High_task(
         RTEMS_DEFAULT_ATTRIBUTES,
         &Task_id[ index ]
       );
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_task_create",
@@ -197,7 +197,7 @@ rtems_task High_task(
     for ( index=1 ; index <= OPERATION_COUNT ; index++ )
       rtems_task_start( Task_id[ index ], Low_tasks, 0 );
 
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_task_start",
@@ -233,7 +233,7 @@ rtems_task High_task(
   Timer_initialize();
     for ( index=1 ; index <= OPERATION_COUNT ; index++ )
       (void) rtems_task_restart( Task_id[ index ], 0 );
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_task_restart: suspended task -- returns to caller",
@@ -249,7 +249,7 @@ rtems_task High_task(
   Timer_initialize();
     for ( index=1 ; index <= OPERATION_COUNT ; index++ )
       (void) rtems_task_delete( Task_id[ index ] );
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_task_delete: suspended task",
@@ -277,7 +277,7 @@ rtems_task High_task(
   Timer_initialize();
     for ( index=1 ; index <= OPERATION_COUNT ; index++ )
       (void) rtems_task_restart( Task_id[ index ], 1 );
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_task_restart: ready task -- returns to caller",
@@ -299,7 +299,7 @@ rtems_task High_task(
   Timer_initialize();
     for ( index=1 ; index <= OPERATION_COUNT ; index++ )
       (void) rtems_task_restart( Task_id[ index ], 1 );
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_task_restart: blocked task -- returns to caller",
@@ -316,7 +316,7 @@ rtems_task High_task(
   Timer_initialize();
     for ( index=1 ; index <= OPERATION_COUNT ; index++ )
       (void) rtems_task_delete( Task_id[ index ] );
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_task_delete: blocked task",

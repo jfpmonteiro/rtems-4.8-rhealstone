@@ -135,7 +135,7 @@ rtems_task High_task(
     RTEMS_NO_TIMEOUT
   );
 
-  end_time = Read_timer();
+  end_time = Timer_read();
 
   put_time(
     "rtems_semaphore_release: task readied -- preempts caller",
