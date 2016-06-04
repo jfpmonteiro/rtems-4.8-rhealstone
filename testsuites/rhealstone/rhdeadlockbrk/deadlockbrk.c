@@ -5,7 +5,6 @@
  */
 
 #include <timesys.h>
-/* #include <rtems/btimer.h> */
 #include <btimer.h>
 
 const char rtems_test_name[] = "RHDEADLOCKBRK";

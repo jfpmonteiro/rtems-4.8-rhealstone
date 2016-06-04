@@ -9,7 +9,6 @@
 #endif
 
 #include <timesys.h>
-/* #include <rtems/btimer.h> */
 #include <btimer.h>
 
 const char rtems_test_name[] = "RHMLATENCY";
@@ -153,8 +152,6 @@ rtems_task Task02( rtems_task_argument ignored )
 
 #define CONFIGURE_MAXIMUM_TASKS              3
 #define CONFIGURE_MAXIMUM_MESSAGE_QUEUES     1
-/* #define CONFIGURE_MESSAGE_BUFFER_MEMORY \ */
-/*   CONFIGURE_MESSAGE_BUFFERS_FOR_QUEUE(1, MESSAGE_SIZE) */
 #define CONFIGURE_TICKS_PER_TIMESLICE        0
 #define CONFIGURE_RTEMS_INIT_TASKS_TABLE
 

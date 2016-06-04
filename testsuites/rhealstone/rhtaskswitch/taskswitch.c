@@ -5,7 +5,6 @@
  */
 
 #include <timesys.h>
-/* #include <rtems/btimer.h> */
 #include <btimer.h>
 
 #define BENCHMARKS 50000

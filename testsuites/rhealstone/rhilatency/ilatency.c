@@ -14,9 +14,7 @@
 #endif
 
 #include <timesys.h>
-/* #include <rtems/btimer.h> */
 #include <btimer.h>
-/* #include <rtems/score/schedulerpriorityimpl.h> */
 #include <coverhd.h>
 #include <bsp.h>
 
@@ -50,15 +48,6 @@ rtems_task Init(
 
   /* TEST_BEGIN(); */
   printf("*** BEGIN OF TEST RHTASKSWITCH ***\n");
-
-  /* if ( */
-  /*   _Scheduler_Table[ 0 ].Operations.initialize */
-  /*     != _Scheduler_priority_Initialize */
-  /* ) { */
-  /*   puts( "  Error ==> " ); */
-  /*   puts( "Test only supported for deterministic priority scheduler\n" ); */
-  /*   rtems_test_exit( 0 ); */
-  /* } */
 
 #define LOW_PRIORITY (RTEMS_MAXIMUM_PRIORITY - 1u)
   status = rtems_task_create(
