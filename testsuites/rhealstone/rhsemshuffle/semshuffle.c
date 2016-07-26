@@ -34,7 +34,6 @@ rtems_task Init( rtems_task_argument ignored )
 
   Print_Warning();
 
-  /* TEST_BEGIN(); */
   printf("*** BEGIN OF TEST RHTASKSWITCH ***\n");
 
   sem_attr =  RTEMS_BINARY_SEMAPHORE | RTEMS_PRIORITY;
@@ -151,7 +150,6 @@ rtems_task Task02( rtems_task_argument ignored )
        tswitch_overhead,        /* Overhead of loop and task switches */
        0
     );
-    /* TEST_END(); */
     printf("*** END OF TEST RHTASKSWITCH ***\n");
     rtems_test_exit( 0 );
   }

@@ -46,7 +46,6 @@ rtems_task Init(
 
   Print_Warning();
 
-  /* TEST_BEGIN(); */
   printf("*** BEGIN OF TEST RHTASKSWITCH ***\n");
 
 #define LOW_PRIORITY (RTEMS_MAXIMUM_PRIORITY - 1u)
@@ -92,7 +91,6 @@ rtems_task Task_1(
     0
   );
 
-  /* TEST_END(); */
   printf("*** END OF TEST RHTASKSWITCH ***\n");
   rtems_test_exit( 0 );
 }

@@ -36,7 +36,6 @@ rtems_task Init( rtems_task_argument ignored )
 
   Print_Warning();
 
-  /* TEST_BEGIN(); */
   printf("*** BEGIN OF TEST RHTASKSWITCH ***\n");
 
   sem_attr = RTEMS_INHERIT_PRIORITY | RTEMS_BINARY_SEMAPHORE | RTEMS_PRIORITY;

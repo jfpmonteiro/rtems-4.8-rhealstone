@@ -37,7 +37,6 @@ void Init(
 
   Print_Warning();
 
-  /* TEST_BEGIN(); */
   printf("*** BEGIN OF TEST RHTASKSWITCH ***\n");
 
   status = rtems_message_queue_create(
@@ -140,7 +139,6 @@ rtems_task Task02( rtems_task_argument ignored )
    treceive_overhead             /* Overhead of recieve call and task switch */
   );
 
-  /* TEST_END(); */
   printf("*** END OF TEST RHTASKSWITCH ***\n");
   rtems_test_exit( 0 );
 }

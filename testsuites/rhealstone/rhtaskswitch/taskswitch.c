@@ -42,7 +42,6 @@ rtems_task Task02( rtems_task_argument ignored )
      dir_overhead              /* Overhead of rtems_task_wake_after directive */
   );
 
-  /* TEST_END(); */
   printf("*** END OF TEST RHTASKSWITCH ***\n");
   rtems_test_exit( 0 );
 }
@@ -68,7 +67,6 @@ rtems_task Init( rtems_task_argument ignored )
 {
   Print_Warning();
 
-  /* TEST_BEGIN(); */
   printf("*** BEGIN OF TEST RHTASKSWITCH ***\n");
 
   Task_name[0] = rtems_build_name( 'T','A','0','1' );
